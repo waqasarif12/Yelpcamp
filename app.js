@@ -1,4 +1,5 @@
-require("dotenv").config();
+require('dotenv').config()
+
 var express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
@@ -16,10 +17,7 @@ var commentRoutes = require("./routes/comments"),
   campgroundRoutes = require("./routes/campgrounds"),
   indexRoutes = require("./routes/index");
 
-mongoose.connect(
-  process.env.DATABASEURL,
-  { useNewUrlParser: true }
-);
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -57,6 +55,6 @@ app.get("*", function(req, res) {
   res.render("error");
 });
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3001, function() {
   console.log("listening on http://localhost:3000/");
 });
