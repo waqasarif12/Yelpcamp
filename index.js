@@ -12,6 +12,17 @@ var express = require("express"),
   methodOverride = require("method-override"),
   flash = require("connect-flash");
 
+
+ mongoose.connect(process.env.MONGO_URL, {
+   useNewUrlParser: true,
+
+ })
+ .then(() => {
+   console.log("connected")
+ })
+ .catch((error) => console.log(`did not connect`));
+
+
 // Requiring routes
 var commentRoutes = require("./routes/comments"),
   campgroundRoutes = require("./routes/campgrounds"),
@@ -55,6 +66,6 @@ app.get("*", function(req, res) {
   res.render("error");
 });
 
-app.listen(process.env.PORT || 3001, function() {
+app.listen(process.env.PORT, function() {
   console.log("listening on http://localhost:3000/");
 });
